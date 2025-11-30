@@ -1,4 +1,12 @@
 
+set -e
+
+# activate virtual environent
+# If this fails, create a venv, "python3 -m venv venv"
+# Then install the dependencies "python install -r requirements.txt"
+# If installing dependencies fails, downlaod the needed packages
+source venv/bin/activate
+
 
 if [ -z "$(docker ps -q -f name=^postgres$)" ]; then
     echo "Postgres docker contianer is not running!"
