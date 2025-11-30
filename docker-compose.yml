@@ -1,0 +1,19 @@
+version: "3.8" # Always a good idea to specify the version
+
+services:
+  db:
+    container_name: postgres_container # Corrected spelling
+    image: postgres:16 # <-- Crucial: Specify an image tag (version)
+    environment:
+      # CRITICAL FIXES: Environment variables must be POSTGRES_ (one S)
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=odoo_test_db # Renamed for clarity, but POSTGRES_DB is the key
+    volumes:
+      - odooDB:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: always
+
+volumes:
+  odooDB:
